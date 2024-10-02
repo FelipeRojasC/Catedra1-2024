@@ -5,9 +5,6 @@ obj/
 .vscode/
 .idea/
 
-#Enviroment
-.env
-
 #DB
 .sqlite
 .db
