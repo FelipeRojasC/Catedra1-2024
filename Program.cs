@@ -1,4 +1,5 @@
 using catedra1_api.Src.Data;
+using catedra1_api.Src.Data.Migrations;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +23,8 @@ using (var scope = app.Services.CreateScope()){
     var context = services.GetRequiredService<ApplicationDbContext>();
     //Aplica cualquier migracion pendiente en la base de datos.
     context.Database.Migrate();
+    //Ingresa los dataseeders
+    DataSeeders.Iniialize(services);
 }
 
 // Configure the HTTP request pipeline.
