@@ -13,7 +13,7 @@ namespace catedra1_api.Src.Models
         public string rut {get;set;}
         public string nombre {get;set;}
         public string correo {get;set;}
-        public DataType fechaNachimiento {get;set;}
+        public DateTime fechaNachimiento {get;set;}
 
         //relaciones
 

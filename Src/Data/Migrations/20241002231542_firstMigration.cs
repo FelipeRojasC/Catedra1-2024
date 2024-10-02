@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -16,7 +17,7 @@ namespace catedra1_api.src.Data.Migrations
                 {
                     id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    name = table.Column<string>(type: "TEXT", nullable: false)
+                    tipo = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,7 +33,7 @@ namespace catedra1_api.src.Data.Migrations
                     rut = table.Column<string>(type: "TEXT", nullable: false),
                     nombre = table.Column<string>(type: "TEXT", nullable: false),
                     correo = table.Column<string>(type: "TEXT", nullable: false),
-                    fechaNachimiento = table.Column<int>(type: "INTEGER", nullable: false),
+                    fechaNachimiento = table.Column<DateTime>(type: "TEXT", nullable: false),
                     generoId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

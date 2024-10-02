@@ -8,7 +8,7 @@ namespace catedra1_api.Src.Models
     public class Genero
     {
         public int id {get;set;}
-        public string name {get;set;}
-        
+        public string tipo {get;set;}
+
     }
 }
