@@ -1,0 +1,13 @@
+bin/
+obj/
+
+#IDEs
+.vscode/
+.idea/
+
+#Enviroment
+.env
+
+#DB
+.sqlite
+.db
