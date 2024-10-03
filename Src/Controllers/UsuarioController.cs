@@ -30,7 +30,7 @@ namespace catedra1_api.Src.Controllers
                 return TypedResults.Conflict();
             }
             if(!_generoRepository.VerificarGenero(usuarioDto.generoId).Result){
-                return TypedResults.BadRequest("No existe ese categoria.");
+                return TypedResults.BadRequest("Genero no valido.");
             }
             var usuario = new Usuario {  
                         rut = usuarioDto.rut,
@@ -45,16 +45,33 @@ namespace catedra1_api.Src.Controllers
         catch(Exception ex){
 
 
-            return TypedResults.BadRequest("Esta todo mal.");
+            return TypedResults.BadRequest("Datos invalidos.");
         }
     }
      [HttpGet("")]
     public async Task<IActionResult> ObtenerUsuario (){
-         // Llamar al repositorio para obtener los productos
-        var products = await _usuarioRepository.ObtenerUsuario();
+         // Llamar al repositorio para obtener los usuarios
+        var usuarios = await _usuarioRepository.ObtenerUsuario();
         
         // Retornar los productos como respuesta HTTP 200 OK
-        return Ok(products);
+        return Ok(usuarios);
     }
-    }
+    [HttpDelete("{id}")]
+        public ActionResult<string> DeleteProduct(int id)
+        {
+            try
+            {
+                var result = _usuarioRepository.EliminarUsuario(id).Result;
+                if (result)
+                {
+                    return Ok("Usuario eliminado con éxito");
+                }
+                return BadRequest("Usuario no encontrado");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+}
 }

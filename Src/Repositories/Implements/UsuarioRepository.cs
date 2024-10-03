@@ -19,6 +19,11 @@ namespace catedra1_api.Src.Repositories.Implements
         }
         public async Task<bool> AgregarUsuario(Usuario usuario)
         {
+            var rutAntiguo = await _context.Usuarios.FirstOrDefaultAsync(x => x.rut == usuario.rut);
+            if(rutAntiguo != null)
+            {
+                throw new Exception("Ya existe un usuario con ese rut.");
+            }
             await _context.Usuarios.AddAsync(usuario);
             await _context.SaveChangesAsync();
             return true;
@@ -32,6 +37,18 @@ namespace catedra1_api.Src.Repositories.Implements
         public async Task<List<Usuario>> ObtenerUsuario()
         {
             return await _context.Usuarios.Include(u => u.genero).ToListAsync();
+        }
+
+        public async Task<bool> EliminarUsuario(int id)
+        {
+            var eliminarUsuario = await _context.Usuarios.FindAsync(id);
+            if(eliminarUsuario == null)
+            {
+                return false;
+            }
+            _context.Usuarios.Remove(eliminarUsuario);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }
