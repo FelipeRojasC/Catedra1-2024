@@ -22,7 +22,11 @@ namespace catedra1_api.Src.Repositories.Implements
             var rutAntiguo = await _context.Usuarios.FirstOrDefaultAsync(x => x.rut == usuario.rut);
             if(rutAntiguo != null)
             {
-                throw new Exception("Ya existe un usuario con ese rut.");
+                throw new Exception(" El RUT ya existe.");
+            }
+            if(usuario.fechaNachimiento>= DateTime.Now)
+            {
+                throw new Exception("La fecha de nacimiento debe ser menor a la fecha actual.");
             }
             await _context.Usuarios.AddAsync(usuario);
             await _context.SaveChangesAsync();

@@ -30,7 +30,7 @@ namespace catedra1_api.Src.Controllers
                 return TypedResults.Conflict();
             }
             if(!_generoRepository.VerificarGenero(usuarioDto.generoId).Result){
-                return TypedResults.BadRequest("Genero no valido.");
+                return TypedResults.BadRequest("Alguna validación no fue cumplida.");
             }
             var usuario = new Usuario {  
                         rut = usuarioDto.rut,
@@ -40,12 +40,12 @@ namespace catedra1_api.Src.Controllers
                         fechaNachimiento = DateTime.Parse(usuarioDto.fechaNachimiento)
                     };
             await _usuarioRepository.AgregarUsuario(usuario);
-            return TypedResults.Ok();
+            return TypedResults.Ok("Usuario creado exitosamente.");
         }
         catch(Exception ex){
 
 
-            return TypedResults.BadRequest("Datos invalidos.");
+            return TypedResults.BadRequest("Alguna validación no fue cumplida.");
         }
     }
      [HttpGet("")]
