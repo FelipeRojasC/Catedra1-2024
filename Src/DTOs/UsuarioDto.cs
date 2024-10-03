@@ -19,6 +19,7 @@ namespace catedra1_api.Src.DTOs
         [Required(ErrorMessage = "El campo email es obligatorio.")]
         [EmailAddress(ErrorMessage = "El email ingresado, no tiene formato válido.")]
         public string correo {get;set;}
+        [Required(ErrorMessage = "El campo fecha de nacimiento es obligatorio.")]
         public string fechaNachimiento {get;set;}
         public int generoId {get;set;}
     }

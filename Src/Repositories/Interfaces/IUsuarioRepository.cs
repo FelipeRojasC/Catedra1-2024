@@ -10,7 +10,11 @@ namespace catedra1_api.Src.Repositories.Interfaces
     {
         Task<bool> AgregarUsuario(Usuario usuario);
         Task<bool> VerificarRut(string rut);
+        Task<Usuario?> ObtenerUsuarioPorId(int id);
         Task<List<Usuario>> ObtenerUsuario();
         public Task<bool> EliminarUsuario(int id);
+        public Task<bool> EditarUsuario(int id,Usuario usuario);
+
+
     }
 }

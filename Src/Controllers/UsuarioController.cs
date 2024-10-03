@@ -73,5 +73,33 @@ namespace catedra1_api.Src.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPut("{id}")]
+        public async Task<IResult> EditarUsuario(int id, UsuarioDto usuarioDto)
+        {
+            try
+            {
+                Usuario usuario = await _usuarioRepository.ObtenerUsuarioPorId(id);
+                if(usuario == null){ 
+                return TypedResults.NotFound("Usuario no encontrado");
+                }
+                if(!_generoRepository.VerificarGenero(usuarioDto.generoId).Result){
+                return TypedResults.BadRequest("Alguna validación no fue cumplida.");
+            }
+            var usuarioEditado = new Usuario {  
+                        rut = usuarioDto.rut,
+                        nombre = usuarioDto.nombre,
+                        correo = usuarioDto.correo,
+                        generoId = usuarioDto.generoId,
+                        fechaNachimiento = DateTime.Parse(usuarioDto.fechaNachimiento)
+                    };
+            await _usuarioRepository.EditarUsuario(id,usuarioEditado);
+            return TypedResults.Ok("Usuario actualizado exitosamente.");
+            }
+            catch (Exception e)
+            {
+                return TypedResults.BadRequest(e.Message);
+            }
+        }
 }
 }
