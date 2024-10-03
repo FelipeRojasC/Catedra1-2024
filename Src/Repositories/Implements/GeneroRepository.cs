@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using catedra1_api.Src.Data;
 using catedra1_api.Src.Models;
 using catedra1_api.Src.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace catedra1_api.Src.Repositories.Implements
 {
@@ -16,14 +17,16 @@ namespace catedra1_api.Src.Repositories.Implements
         {
             _context = context;
         }
-        public Task<IEnumerable<Genero>> GetGenero()
+        public async Task<IEnumerable<Genero>> GetGenero()
         {
-            throw new NotImplementedException();
+            var generos = await _context.Generos.ToListAsync();
+            return generos;
         }
 
-        public Task<bool> VerificarGenero(int id)
+        public async Task<bool> VerificarGenero(int id)
         {
-            throw new NotImplementedException();
+           var genero = await _context.Generos.FindAsync(id);
+            return genero != null;
         }
     }
 }
