@@ -29,5 +29,9 @@ namespace catedra1_api.Src.Repositories.Implements
             var usuario = await _context.Usuarios.Where(u => u.rut == rut).FirstOrDefaultAsync();
             return usuario != null;
         }
+        public async Task<List<Usuario>> ObtenerUsuario()
+        {
+            return await _context.Usuarios.Include(u => u.genero).ToListAsync();
+        }
     }
 }

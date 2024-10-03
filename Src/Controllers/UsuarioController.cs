@@ -48,5 +48,13 @@ namespace catedra1_api.Src.Controllers
             return TypedResults.BadRequest("Esta todo mal.");
         }
     }
+     [HttpGet("")]
+    public async Task<IActionResult> ObtenerUsuario (){
+         // Llamar al repositorio para obtener los productos
+        var products = await _usuarioRepository.ObtenerUsuario();
+        
+        // Retornar los productos como respuesta HTTP 200 OK
+        return Ok(products);
+    }
     }
 }
