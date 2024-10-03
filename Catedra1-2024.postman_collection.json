@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "bd4849c2-41fb-4b27-8737-a9aa85685ba3",
+		"name": "Catedra1-2024",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33842791"
+	},
+	"item": [
+		{
+			"name": "CrearUsuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"rut\": \"145264854\",\r\n\"nombre\": \"Oscar\",\r\n\"correo\": \"correo11@gmail.com\",\r\n\"fechaNachimiento\": \"10/09/1990\",\r\n\"generoId\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5154/api/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5154",
+					"path": [
+						"api",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerUsuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5154/api/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5154",
+					"path": [
+						"api",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditarUsuario",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"rut\": \"192644259\",\r\n\"nombre\": \"Fernando\",\r\n\"correo\": \"correo1@gmail.com\",\r\n\"fechaNachimiento\": \"10/09/2000\",\r\n\"generoId\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5154/api/usuario/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5154",
+					"path": [
+						"api",
+						"usuario",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Usuario",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5154/api/usuario/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5154",
+					"path": [
+						"api",
+						"usuario",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
