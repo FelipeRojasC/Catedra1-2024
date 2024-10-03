@@ -1,5 +1,7 @@
 using catedra1_api.Src.Data;
 using catedra1_api.Src.Data.Migrations;
+using catedra1_api.Src.Repositories.Implements;
+using catedra1_api.Src.Repositories.Interfaces;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddScoped<IUsuarioRepository,UsuarioRepository>();
+builder.Services.AddScoped<IGeneroRepository,GeneroRepository>();
 
 
 string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "Data Source = app.db";
@@ -26,7 +30,7 @@ using (var scope = app.Services.CreateScope()){
     //Ingresa los dataseeders
     DataSeeders.Iniialize(services);
 }
-
+app.MapControllers();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
