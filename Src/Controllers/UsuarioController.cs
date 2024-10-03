@@ -57,16 +57,16 @@ namespace catedra1_api.Src.Controllers
         return Ok(usuarios);
     }
     [HttpDelete("{id}")]
-        public ActionResult<string> DeleteProduct(int id)
+        public ActionResult<string> EliminarUsuario(int id)
         {
             try
             {
                 var result = _usuarioRepository.EliminarUsuario(id).Result;
                 if (result)
                 {
-                    return Ok("Usuario eliminado con éxito");
+                    return Ok("Usuario eliminado exitosamente.");
                 }
-                return BadRequest("Usuario no encontrado");
+                return NotFound("Usuario no encontrado");
             }
             catch (Exception e)
             {
